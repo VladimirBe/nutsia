@@ -1,0 +1,45 @@
+
+{% load staticfiles %}
+  <header id="header" class="header">
+    <div class="header-top bg-black-333 xs-text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="widget no-border m-0">
+              <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm">
+                <li><a href="https://facebook.com/Walnutsia/"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="widget no-border m-0">
+              <ul class="list-inline xs-text-center text-right mt-5">
+                <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored"></i> <a class="text-white" href="#">0 74 74 76 2 76</a> </li>
+                <li class="m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-theme-colored"></i> Luni-Duminică 10:00 to 22:00 </li>
+                <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored"></i> <a class="text-white" href="#">walnutsia@gmail.com</a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="header-nav">
+    <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+      <div class="container">
+        <nav id="menuzord-right" class="menuzord default">
+          <a class="menuzord-brand pull-left flip xs-pull-center mt-20" href="{% url 'home' %}">
+            <img src="{% static 'assets/images/Logo.png' %}" alt="">
+          </a>
+          <ul class="menuzord-menu">
+            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'under_construction' %}">Despre noi</a></li>
+            <li><a href="{% url 'homepage' %}">Blog</a></li>
+            <li><a href="{% url 'galery' %}">Galerie</a></li>
+            <li><a href="{% url 'contact_page' %}">Contact</a></li>
+            <li><a href="{% url 'under_construction' %}"><img style="max-width:25px;" src="{%static '/assets/images/english.png'%}" alt="English" /></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

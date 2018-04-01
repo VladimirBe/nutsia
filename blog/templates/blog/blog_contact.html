@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Contact - {{ block.super }}{% endblock %}
+{% block canonical_url %}https://{{ request.get_host }}{% url 'contact_page' %}{% endblock %}
+
+{% block content %}
+    <section id="contact" class="divider bg-lighter">
+        {% if success %}
+    <meta http-equiv="refresh" content="7;url={% url 'homepage' %}" />
+    <p class="alert alert-success text-center cst__radius">{{ success }}</p>
+      <div class="container pt-0 pb-0">
+  	    <div class="section-content">
+          <div class="row">
+                {% else %}
+          	<div class="col-md-12 text-center">
+                <h3 class="mt-100 mb-30">Contacteați-ne acum!</h3>
+                <p class="mb-30">Dacă nu merge să trimiteți email, ne puteți contacta pe  <a href="https://www.facebook.com/Walnutsia/" target="_blank">Facebook Chat</a> </p>
+          	</div>
+            <div class="col-sm-12 col-md-12">
+              <div class="contact-wrapper">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <form id="contact_form" name="contact_form" class="form-transparent" action="." method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button class="btn btn-primary btn-block cst__radius" type="submit">Send</button>
+    </div>
+    <div class="g-recaptcha" data-sitekey="6LcyhDoUAAAAAOBkYh0w0Fon8sK-RlXWvNP9fEUz"></div>
+  </form>
+  {% endif %}
+
+</div>
+            </div>
+          </div>
+  	    </div>
+      </div>
+    </section>
+
+  {% if request.GET.subject %}
+  <script>
+    document.getElementById("id_subject").value = "{{ request.GET.subject }}";
+  </script>
+  {% endif %}
+{% endblock %}

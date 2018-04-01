@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  {% block message_info_homepage %}{% endblock %}
+  <div class="main-content">
+
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'assets/images/slider/slide7.jpg' %}">
+      <div class="container pt-100 pb-50">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="title text-white">Blog</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+  <!-- Section: News & Blog -->
+    <section id="news">
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+		    {% for object in object_list %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <article class="post clearfix mb-sm-30">
+                <div class="entry-header">
+                  <div class="post-thumb thumb">
+				  {% if object.cover %}
+                    <img src="/media/{{ object.cover }}" alt="{{ object.title }}" class="img-responsive img-fullwidth">
+					{% endif %}
+                  </div>
+                </div>
+                <div class="entry-content p-20 pr-10">
+                  <div class="entry-meta media mt-0 no-bg no-border">
+                    <div class="entry-date media-left flip text-center">
+                      <ul>
+                        <li class="font-16 font-weight-600 border-bottom bg-white-f1 pt-5 pr-15 pb-5 pl-15">{{ object.created.day }}</li>
+                        <li class="font-12 text-white text-uppercase bg-theme-colored pt-5 pr-15 pb-5 pl-15">{{ object.created|date:"b" }}</li>
+                      </ul>
+                    </div>
+                    <div class="media-body pl-10">
+                      <div class="event-content pull-left flip">
+                        <h4 class="entry-title text-white text-capitalize m-0"><a href="{% url 'detail_post_page' slug=object.slug %}">{{ object.title|safe|striptags|truncatewords:"10"|linebreaks  }}</a></h4>
+                        <!--<span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
+                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>-->
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-10">{{ object.description|safe|striptags|truncatewords:"20"|linebreaks }}</p>
+                  <a class="btn btn-gray btn-sm" href="{% url 'detail_post_page' slug=object.slug %}">Read more</a>
+                  <div class="clearfix">
+				  <ul class="styled-icons icon-theme-colored icon-circled icon-dark icon-sm mt-15 mb-0">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                      </ul>
+				  </div>
+                </div>
+              </article>
+            </div>
+			{% endfor %}
+	       </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- end main-content -->
+
+{% endblock %}
